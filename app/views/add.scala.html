@@ -1,0 +1,14 @@
+@(countryForm: Form[Country])
+@import helper._
+
+@main("Country data") {
+    <h2>Add a new country</h2>
+    
+    @form(routes.Application.newCountry()) {
+        
+        @inputText(countryForm("id")) 
+        
+        <input type="submit" value="Create">
+        
+    }
+}

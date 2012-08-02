@@ -1,8 +1,5 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -14,8 +11,5 @@ public class Country extends Model {
   public String id;
   
   public String ISOName;
-  public static List<Country> all() {
-    return new ArrayList<Country>();
-  }
   
 }

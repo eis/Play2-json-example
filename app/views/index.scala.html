@@ -1,4 +1,4 @@
-@(countries: List[Country], countryForm: Form[Country])
+@(countries: List[Country])
 @import helper._
 
 @main("Country data") {
@@ -16,15 +16,5 @@
             </li>
         }
     </ul>
-    
-    <h2>Add a new country</h2>
-    
-    @form(routes.Application.newCountry()) {
-        
-        @inputText(countryForm("id")) 
-        
-        <input type="submit" value="Create">
-        
-    }
-    
+  
 }

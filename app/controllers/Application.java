@@ -7,17 +7,29 @@ import play.mvc.*;
 import views.html.*;
 import models.*;
 
+import play.db.ebean.Model;
+import play.db.jpa.Transactional;
+
+import java.util.List;
+import static play.libs.Json.toJson;
+
 public class Application extends Controller {
   
-  static Form<Country> countryForm = form(Country.class);
+  //static Form<Country> countryForm = form(Country.class);
   
+  @Transactional(readOnly=true)
   public static Result index() {
-    return redirect(routes.Application.countries());
+      return ok(index.render(new Model.Finder(String.class, Country.class).all()));
+    //return redirect(routes.Application.countries());
   }
   public static Result countries() {
+      List<Country> countries = new Model.Finder(String.class, Country.class).all();
+      return ok(toJson(countries));
+      /*
     return ok(
         views.html.index.render(Country.all(), countryForm)
       );
+      */
   }
   public static Result newCountry() {
     return TODO;
