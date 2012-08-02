@@ -12,12 +12,9 @@ public class CountryTest {
       running(fakeApplication(inMemoryDatabase()), new Runnable() {
         public void run() {
             Country finland = new Country();
-            finland.id = "FI";
-            Country.create(finland);
-            assertThat(finland.id).isEqualTo("FI");
-            assertThat(Country.all().size()).isEqualTo(1);
-            Country.delete(finland.id);
-            assertThat(Country.all().size()).isEqualTo(0);
+            finland.ISOName = "FI";
+            finland.save();
+            assertThat(finland.id).isNotNull();
         }
       });
     }    

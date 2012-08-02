@@ -3,21 +3,19 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-import play.data.validation.Constraints.Required;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-public class Country {
-  @Required
+import play.db.ebean.Model;
+
+@Entity
+public class Country extends Model {
+  @Id
   public String id;
+  
+  public String ISOName;
   public static List<Country> all() {
     return new ArrayList<Country>();
   }
   
-  public static void create(Country country) {
-    
-  }
-  
-  public static void delete(String id) {
-    
-  }
-
 }
