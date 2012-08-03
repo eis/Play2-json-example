@@ -1,4 +1,7 @@
-This is your new Play 2.0 application
+This is a sample Play 2.0 application
 =====================================
+
+It doesn't do anything fancy, but allows creating instances of data, as well as outputting them as JSON.
+Also, it should include an adequate number of Play 2.0 tests.
 
 This file will be packaged with your application, when using `play dist`.
