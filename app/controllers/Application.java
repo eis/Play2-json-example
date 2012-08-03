@@ -8,16 +8,17 @@ import views.html.*;
 import models.*;
 
 import play.db.ebean.Model;
-import play.db.jpa.Transactional;
+import play.db.ebean.Transactional;
+//import play.db.jpa.Transactional;
 
 import java.util.List;
 import static play.libs.Json.toJson;
 
 public class Application extends Controller {
   
-  //static Form<Country> countryForm = form(Country.class);
+  static Form<Country> countryForm = form(Country.class);
   
-  @Transactional(readOnly=true)
+  @Transactional()
   public static Result index() {
       return ok(index.render(new Model.Finder(String.class, Country.class).all()));
     //return redirect(routes.Application.countries());
@@ -30,6 +31,9 @@ public class Application extends Controller {
         views.html.index.render(Country.all(), countryForm)
       );
       */
+  }
+  public static Result newCountryForm() {
+      return ok(add.render(countryForm));
   }
   public static Result newCountry() {
     return TODO;

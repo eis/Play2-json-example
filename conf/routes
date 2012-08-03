@@ -10,7 +10,8 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Countries          
 GET     /countries              controllers.Application.countries()
-POST    /countries              controllers.Application.newCountry()
+GET     /countries/new          controllers.Application.newCountry()
+GET     /countries/new          controllers.Application.newCountry()
 POST    /countries/:id/delete   controllers.Application.deleteCountry(id: String)
 
 # Markets
