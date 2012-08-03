@@ -9,19 +9,16 @@ import models.*;
 
 import play.db.ebean.Model;
 import play.db.ebean.Transactional;
-//import play.db.jpa.Transactional;
 
 import java.util.List;
+
 import static play.libs.Json.toJson;
 
 public class Application extends Controller {
   
-  static Form<Country> countryForm = form(Country.class);
-  
   @Transactional()
   public static Result index() {
       return ok(index.render(new Model.Finder(String.class, Country.class).all()));
-    //return redirect(routes.Application.countries());
   }
   public static Result countries() {
       List<Country> countries = new Model.Finder(String.class, Country.class).all();
@@ -33,21 +30,27 @@ public class Application extends Controller {
       */
   }
   public static Result newCountryForm() {
+      Form<Country> countryForm = form(Country.class);
       return ok(add.render(countryForm));
   }
   public static Result newCountry() {
-    return TODO;
+      Form<Country> countryFormInput = form(Country.class).bindFromRequest();
+      if (countryFormInput.hasErrors()) {
+          return badRequest();
+      }
+      countryFormInput.get().save();
+      return redirect(routes.Application.countries());
   }
   public static Result deleteCountry(String id) {
-    return TODO;
+      return TODO;
   }
   public static Result markets() {
-    return TODO;
+      return TODO;
   }
   public static Result newMarket() {
-    return TODO;
+      return TODO;
   }
   public static Result deleteMarket(Long id) {
-    return TODO;
+      return TODO;
   }
 }

@@ -1,6 +1,4 @@
-@(countries: List[Country])
-@import helper._
-
+@(countries: List[Country])@import helper._
 @main("Country data") {
     
     <h1>@countries.size() countries</h1>
@@ -8,13 +6,17 @@
     <ul>
         @for(country <- countries) {
             <li>
-                @country.id
+                @country.getId
                 
-                @form(routes.Application.deleteCountry(country.id)) {
+                @form(routes.Application.deleteCountry(country.getId)) {
                     <input type="submit" value="Delete">
                 }
             </li>
         }
+    </ul>
+    <ul>
+        <li><a href="/countries">Countries as JSON</a></li>
+        <li><a href="/countries/new">A new country</a></li>
     </ul>
   
 }

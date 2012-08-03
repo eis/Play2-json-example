@@ -7,6 +7,6 @@ tmp
 .classpath
 .project
 dist
-.settings/*
-.settings/**
+.settings
 .target
+bin
